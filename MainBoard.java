@@ -19,21 +19,67 @@ class MainBoard
 			 }
 		}
 		
-		//code that lets user determine who goes first
+		//CODE THAT LETS USER DETERMINE WHO GOES FIRST
 		
-		//code that lets user determine which big square they want to go to
+		//CODE THAT LETS USER DETERMINE THE FIRST BIG SQUARE THEY WANT TO GO TO
 		
-		playerChoice(nextRow, nextCol);
+		while (!finalWin(player)) //will loop till there is a winner
+		{
+			playerChoice(nextRow, nextCol);/// nextRow and nextCol determine the big square the player has to go to next
+		}
 	}
 	
 	public void playerChoice(int row, int col)
 	{
-		mainBoard[row][col].choice(player);
+		int [] arr = new int[2];
+		arr = mainBoard[row][col].choice(player);
 		
-		if (mainBoard[row][col].isWinner());
+		if (mainBoard[row][col].isWinner(player));
 		{
 			finalView[row][col] = player;
 		}
+		
+		
+		nextRow = arr[0];
+		nextCol = arr[1];
+	}
+	
+	boolean finalWin(int cho)
+	{
+		if (finalView[0][0] == cho && finalView[0][1] == cho && finalView[0][2] == cho) //vertical
+		{
+			return true;
+		}
+		else if (finalView[1][0] == cho && finalView[1][1] == cho && finalView[1][2] == cho)
+		{
+			return true;
+		}
+		else if (finalView[2][0] == cho && finalView[2][1] == cho && finalView[2][2] == cho)
+		{
+			return true;
+		}
+		else if (finalView[0][0] == cho && finalView[1][0] == cho && finalView[2][0] == cho) //horizontal wins
+		{
+			return true;
+		}
+		else if (finalView[0][1] == cho && finalView[1][1] == cho && finalView[2][1] == cho)
+		{
+			return true;
+		}
+		else if (finalView[0][2] == cho && finalView[1][2] == cho && finalView[2][2] == cho)
+		{
+			return true;
+		}
+		else if (finalView[0][0] == cho && finalView[1][1] == cho && finalView[2][2] == cho) //diagonal wins
+		{
+			return true;
+		}
+		else if (finalView[0][2] == cho && finalView[1][1] == cho && finalView[2][0] == cho)
+		{
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	

@@ -15,50 +15,48 @@ public class miniBoard
 		}
 	}
 	
-	boolean choice(int cho)
+	int [] choice(int cho) // has to return a row and column value
 	{
 		//CODE THAT LETS PLAYER MAKE CHOICE GRAPHICALLY
 		
-		if (isWinner())
-		{
-			return true; //return who won
-		}
-		else
-			return false;
+		int [] coordinates = new int[2];
 		
+		// coordinates[0] = what row the player chose
+		// coordinates[1] = what column the player chose
+		return coordinates;
 	}
 	
-	boolean isWinner()
+	boolean isWinner(int cho)
 	{
-		if (board[0][0] != 0 && board[0][1] != 0 && board[0][2] != 0) //vertical
+		if (board[0][0] == cho && board[0][1] == cho && board[0][2] == cho) //vertical
 		{
 			return true;
 		}
-		else if (board[1][0] != 0 && board[1][1] != 0 && board[1][2] != 0)
+		else if (board[1][0] == cho && board[1][1] == cho && board[1][2] == cho)
 		{
 			return true;
 		}
-		else if (board[2][0] != 0 && board[2][1] != 0 && board[2][2] != 0)
+		else if (board[2][0] == cho && board[2][1] == cho && board[2][2] == cho)
 		{
 			return true;
 		}
-		else if (board[0][0] != 0 && board[1][0] != 0 && board[2][0] != 0) //horizontal wins
+		else if (board[0][0] == cho && board[1][0] == cho && board[2][0] == cho) //horizontal wins
 		{
 			return true;
 		}
-		else if (board[0][1] != 0 && board[1][1] != 0 && board[2][1] != 0)
+		else if (board[0][1] == cho && board[1][1] == cho && board[2][1] == cho)
 		{
 			return true;
 		}
-		else if (board[0][2] != 0 && board[1][2] != 0 && board[2][2] != 0)
+		else if (board[0][2] == cho && board[1][2] == cho && board[2][2] == cho)
 		{
 			return true;
 		}
-		else if (board[0][0] != 0 && board[1][1] != 0 && board[2][2] != 0) //diagonal wins
+		else if (board[0][0] == cho && board[1][1] == cho && board[2][2] == cho) //diagonal wins
 		{
 			return true;
 		}
-		else if (board[0][2] != 0 && board[1][1] != 0 && board[2][0] != 0)
+		else if (board[0][2] == cho && board[1][1] == cho && board[2][0] == cho)
 		{
 			return true;
 		}
