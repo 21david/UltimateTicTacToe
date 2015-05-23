@@ -4,7 +4,7 @@ public class miniBoard
 	int board[][] = new int[3][3]; //0 blank 1 = 0 2 = X
 	int choice;
 	
-	miniBoard(boolean p)
+	miniBoard()
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -13,22 +13,18 @@ public class miniBoard
 				 board[i][j] = 0;
 			 }
 		}
-		
-		if (p)
-		{
-			choice = 1;
-		}
-		else
-		{
-			choice = 2;
-		}
-		
+	}
+	
+	boolean choice(int cho)
+	{
 		//CODE THAT LETS PLAYER MAKE CHOICE GRAPHICALLY
 		
 		if (isWinner())
 		{
-			return choice; //return who won
+			return true; //return who won
 		}
+		else
+			return false;
 		
 	}
 	
