@@ -55,7 +55,7 @@ class MainBoard
 		
 		// set up the jframe
 		setUpJFrame();
-		jframe.add(gameCanvas);
+		jframe.add(menuJPanel);
 		
 		// display jframe
 		jframe.setVisible(true);
@@ -211,9 +211,12 @@ class MainBoard
 				mainBoard[mainRow][mainCol].board[miniRow][miniCol] = player;
 				if (mainBoard[mainRow][mainCol].isWinner(player))
 				{
+					out.println("Player " + player + " won block " + (mainRow + 1) + " " + (mainCol + 1));
 					finalView[mainRow][mainCol] = player;
+					out.println(Arrays.deepToString(finalView).replace("],","]\n"));
 					if (finalWin(player))
 					{
+						out.println("winner");
 						displayWinMessage(player);
 					}
 				}
@@ -230,8 +233,16 @@ class MainBoard
 		
 		public void displayWinMessage(int player)
 		{
+			JFrame jframe = new JFrame(NAME_OF_GAME);
+			jframe.setSize(200, 100);
 			
+			if(player == 1)
+				jframe.add(new Button("O wins!"));
+			else if(player == 2)
+				jframe.add(new Button("X wins!"));
+			jframe.setVisible(true);
 		}
+		
 
 	}
 	
