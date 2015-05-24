@@ -18,7 +18,23 @@ public class miniBoard
 	int [] choice(int cho) // has to return a row and column value
 	{
 		//CODE THAT LETS PLAYER MAKE CHOICE GRAPHICALLY
-		
+		int row = -99;
+		int col = -99;
+
+		boolean taken = true;		
+
+
+		while (taken)
+		{
+			if (board[row][col] == 0)
+			{
+				board[row][col] = cho;
+				taken = false;
+			}
+			else
+			//PRINT A MESSAGE SAYING ITS ALREADY TAKEN
+		}
+
 		int [] coordinates = new int[2];
 		
 		// coordinates[0] = what row the player chose
