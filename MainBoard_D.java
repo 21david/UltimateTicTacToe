@@ -120,6 +120,15 @@ class MainBoard
 			g.setFont(new Font("Arial", Font.BOLD, 20));
 			g.setColor(Color.black);
 			g.drawString("Ultimate Tic Tac Toe", 100, 100);
+			g.setFont(new Font("Arial", Font.PLAIN, 14));
+			g.drawString("Rules:", 100, 150);
+			g.drawString("The rules for ultimate tic tac toe are similar to it's regular counterpart.", 100, 200);
+			g.drawString("The game is composed of 9 big tic tac toe tables. The first player gets the first big table. ", 100, 250);
+			g.drawString("Example: If P1 marks a small top right square then P2 has to mark a small square ", 100, 300);
+			g.drawString("in a top right big square.", 100, 320);
+			g.drawString("The game continues until you get three big squares in a row.", 100, 350);
+			g.drawString("If the next big square you have to choose is full then you can pick any big square.", 100, 400);
+			g.drawString("Hit Press Me and maximize the window to begin.", 100, 600);
 		}
 	}
 	
