@@ -23,10 +23,12 @@ class MainBoard
 		
 		//CODE THAT LETS USER DETERMINE THE FIRST BIG SQUARE THEY WANT TO GO TO
 		
-		while (!finalWin(player)) //will loop till there is a winner
+		//INITIALIZE FIRST PLAYER FIRST ROW AND FIRST COLUMN VARIABLES
+		
+		do //will loop till there is a winner
 		{
 			playerChoice(nextRow, nextCol);/// nextRow and nextCol determine the big square the player has to go to next
-		}
+		} while (!finalWin(player));
 	}
 	
 	public void playerChoice(int row, int col)
@@ -79,7 +81,15 @@ class MainBoard
 			return true;
 		}
 		else
+		{
+			if (player == 1)
+				player = 2;
+			else
+				player = 1;
+			
 			return false;
+			
+		}
 	}
 	
 	
