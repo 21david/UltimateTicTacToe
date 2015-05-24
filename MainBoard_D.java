@@ -15,6 +15,9 @@ class MainBoard
 	int numOfCol = 3;
 	int numOfRow = 3;
 	int player; // blank = 0 O = 1 X = 2 
+	int nextRow;
+	int nextCol;
+	boolean firstTurn = true;
 	
 	miniBoard [][] mainBoard = new miniBoard[numOfCol][numOfRow];
 	int [][] finalView = new int[numOfCol][numOfRow];
@@ -180,7 +183,6 @@ class MainBoard
 		{
 			out.println("mouse clicked");
 			// raw x and y coordinates
-			boolean taken = true;
 		
 			int x = e.getX();
 			int y = e.getY();
@@ -200,25 +202,33 @@ class MainBoard
 			out.println(mainCol + "  " + mainRow);
 			out.println(miniCol + "  " + miniRow);
 				
-			if (mainBoard[mainRow][mainCol].board[miniRow][miniCol] != 0)
+			if (!OK_To_Mark(mainRow, mainCol, miniRow, miniCol))
 			{
-					//message shows up saying its taken
+				
 			}
 			else
 			{
 				player = 2 - player/2;
-				taken = false;
 				mainBoard[mainRow][mainCol].board[miniRow][miniCol] = player;
+				firstTurn = false;
+				nextRow = miniRow;
+				nextCol = miniCol;
+				
+				
 				if (mainBoard[mainRow][mainCol].isWinner(player))
 				{
-					out.println("Player " + player + " won block " + (mainRow + 1) + " " + (mainCol + 1));
+					if (finalView[mainRow][mainCol] == 0)
+					{
 					finalView[mainRow][mainCol] = player;
+					out.println("Player " + player + " won block " + (mainRow + 1) + " " + (mainCol + 1));
 					out.println(Arrays.deepToString(finalView).replace("],","]\n"));
 					if (finalWin(player))
 					{
 						out.println("winner");
 						displayWinMessage(player);
 					}
+					}
+					
 				}
 				gameCanvas.repaint();
 				
@@ -243,6 +253,34 @@ class MainBoard
 			jframe.setVisible(true);
 		}
 		
+		boolean OK_To_Mark(int R, int C, int r, int c)
+		{
+			if (firstTurn)
+				return true;
+			
+			if (finalView[nextRow][nextCol] != 0) // if your next one is full
+			{
+				return true;
+			}
+			
+			if (mainBoard[R][C].board[r][c] == 0) //is blank or not
+			{
+				if (R == nextRow)
+				{
+					if (C == nextCol)
+					{
+						return true;
+					}
+					else
+						return false;
+				}
+				else
+					return false;
+			}
+			else
+				return false;
+			
+		}
 
 	}
 	
