@@ -17,9 +17,10 @@ public class miniBoard
 	
 	int [] choice(int cho) // has to return a row and column value
 	{
-		//CODE THAT LETS PLAYER MAKE CHOICE GRAPHICALLY
 		int row = -99;
 		int col = -99;
+
+		//CODE THAT LETS PLAYER MAKE CHOICE GRAPHICALLY
 
 		boolean taken = true;		
 

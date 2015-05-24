@@ -29,6 +29,8 @@ class MainBoard
 		{
 			playerChoice(nextRow, nextCol);/// nextRow and nextCol determine the big square the player has to go to next
 		} while (!finalWin(player));
+
+		//PRINT MESSAGE SAYING THE CURRENT PLAYER WON
 	}
 	
 	public void playerChoice(int row, int col)
