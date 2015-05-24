@@ -1,7 +1,3 @@
-//Original Authors:
-//David Espinosa
-//Ismael Almaguer
-
 import java.awt.BorderLayout;
 import java.util.*;
 
@@ -22,8 +18,6 @@ class MainBoard
 	int nextRow;
 	int nextCol;
 	boolean firstTurn = true;
-	int bigStale = 0;
-
 	
 	miniBoard [][] mainBoard = new miniBoard[numOfCol][numOfRow];
 	int [][] finalView = new int[numOfCol][numOfRow];
@@ -235,7 +229,6 @@ class MainBoard
 					if (finalView[mainRow][mainCol] == 0)
 					{
 					finalView[mainRow][mainCol] = player;
-					bigStale++;
 					out.println("Player " + player + " won block " + (mainRow + 1) + " " + (mainCol + 1));
 					out.println(Arrays.deepToString(finalView).replace("],","]\n"));
 					if (finalWin(player))
