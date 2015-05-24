@@ -1,3 +1,7 @@
+//Original Authors
+//David Espinosa
+//Ismael Almaguer
+
 import java.awt.BorderLayout;
 import java.util.*;
 
