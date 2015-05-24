@@ -3,6 +3,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -179,9 +180,10 @@ class MainBoard
 		{
 			out.println("mouse clicked");
 			// raw x and y coordinates
+			boolean taken = true;
+		
 			int x = e.getX();
 			int y = e.getY();
-			
 			
 			// the row and col of the big box they clicked in
 			int mainCol = x / 240;
@@ -189,7 +191,7 @@ class MainBoard
 			
 			row = x;
 			col = y;
-			
+				
 			// the row and col of the small box they clicked in
 			int miniCol = x % 240 / 80;
 			int miniRow = y % 240 / 80;
@@ -197,16 +199,39 @@ class MainBoard
 			out.println(x + "  " + y);
 			out.println(mainCol + "  " + mainRow);
 			out.println(miniCol + "  " + miniRow);
+				
+			if (mainBoard[mainRow][mainCol].board[miniRow][miniCol] != 0)
+			{
+					//message shows up saying its taken
+			}
+			else
+			{
+				player = 2 - player/2;
+				taken = false;
+				mainBoard[mainRow][mainCol].board[miniRow][miniCol] = player;
+				if (mainBoard[mainRow][mainCol].isWinner(player))
+				{
+					finalView[mainRow][mainCol] = player;
+					if (finalWin(player))
+					{
+						displayWinMessage(player);
+					}
+				}
+				gameCanvas.repaint();
+				
+			}
 			
-			player = 2 - player/2;
-			mainBoard[mainRow][mainCol].board[miniRow][miniCol] = player;
-			gameCanvas.repaint();
 		}
 
 		public void mouseClicked(MouseEvent e) {}
 		public void mouseEntered(MouseEvent e) {}
 		public void mouseExited(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
+		
+		public void displayWinMessage(int player)
+		{
+			
+		}
 
 	}
 	
